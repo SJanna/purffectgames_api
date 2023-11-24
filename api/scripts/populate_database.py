@@ -30,7 +30,7 @@ def populate_clients(num_clients):
         client.save()
 
 # Populate Game model
-def populate_games(num_games):
+def populate_games(num_games, num_rentals):
     for _ in range(num_games):
         game = Game(
             title=' '.join(fake.words(nb=randint(1,5), unique=True)).title(),
@@ -44,9 +44,7 @@ def populate_games(num_games):
             platform=choice(['PlayStation 2', 'Nintendo DS', 'Game Boy/Game Boy Color', 'PlayStation 4', 'Nintendo Switch', 'PlayStation', 'Nintendo Wii', 
                                 'PlayStation 3', 'Xbox 360', 'Nintendo Entertainment System', 'Xbox One', 'Game Boy Advance', 'PlayStation Portable',
                                   'Nintendo 3DS', 'PlayStation 5', 'Xbox Series X/S', 'Nintendo GameCube', 'Xbox', 'Atari 2600', 'Sega Genesis']),
-
             popularity=fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-        
             genre=choice(['Action', 'Adventure', 'Role-playing', 'Simulation', 'Strategy', 'Sports', 'Puzzle', 'Idle', 'Arcade', 'Racing', 'Fighting', 'Shooter',
                             'Survival', 'Horror', 'Platformer', 'Stealth', 'Battle Royale', 'MMO', 'Sandbox', 'Open World', 'Rhythm', 'Educational', 'Trivia', 'Board',
                             'Card', 'Casual', 'Party', 'Music', 'Programming', 'Visual Novel', 'Dating Sim', 'Text Adventure', 'Interactive Movie', 'Tower Defense', 
@@ -56,7 +54,8 @@ def populate_games(num_games):
                             'Artillery', 'Vehicular Combat', 'Flight Simulation', 'Train Simulation', 'Life Simulation', 'Construction and Management Simulation',
                             'Vehicle Simulation', 'Business Simulation', 'God Game', 'Social Simulation', 'City-building', 'Government Simulation', 'Art Game', 'Indie',
                             'Non-game', 'Christian Game', 'Electronic Sports', 'Esports', 'Competitive', 'Sports-based Fighting',
-                            'Turn-based Strategy', 'Turn-based Tactics', 'Grand Strategy', '4X', 'Wargame'])
+                            'Turn-based Strategy', 'Turn-based Tactics', 'Grand Strategy', '4X', 'Wargame']),
+            rented_times= randint(1, int(num_rentals/num_games))
           )
         game.save()
 
@@ -75,12 +74,12 @@ def populate_rentals(num_rentals, num_clients, num_games):
         rental.games.set(games_to_add)
 
 def run():
-    num_clients = 20  # Adjust the number of clients as needed
+    num_clients = 200  # Adjust the number of clients as needed
     num_games = 150  # Adjust the number of games as needed
-    num_rentals = 30  # Adjust the number of rentals as needed
+    num_rentals = 700  # Adjust the number of rentals as needed
 
     populate_clients(num_clients)
-    populate_games(num_games)
+    populate_games(num_games, num_rentals)
     populate_rentals(num_rentals, num_clients, num_games)
 
     print("Database populated successfully!")
