@@ -100,4 +100,4 @@ Welcome to the Purffect Games API, the backbone of the Purffect Games ecosystem.
 
 ## Additional Information
 
-For any inquiries or support, please contact me[sjannadiaz@gmail.com](mailto:sjannadiaz@gmail.com). We're here to ensure a purrfect API experience for you and your applications!
+For any inquiries or support, please contact me [sjannadiaz@gmail.com](mailto:sjannadiaz@gmail.com). We're here to ensure a purrfect API experience for you and your applications!
